@@ -7,7 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <% if user_signed_in? %>
+  <p>hello, <%= current_user.email %>
+  <hr>
+  <%= link_to "log out", destroy_user_session_path, method: :delete %>
+  </p>
+  <% else %>
+  <%= link_to "サインイン", new_user_session_path %>
+  <%= link_to "サインアップ", new_user_registration_path %>
+  <% end %>
 <%= yield %>
 
 </body>
